@@ -56,8 +56,8 @@ jobs:
             scp -o StrictHostKeyChecking=no -i control-machine.pem ./docker-compose.yml ubuntu@$DEV_SERVER_IP:/home/ubuntu 
             ssh -o StrictHostKeyChecking=no -i control-machine.pem ubuntu@$DEV_SERVER_IP "
             docker login -u $DC_USERNAME -p $DC_PASS &&
-            docker-compose down &&
-            docker-compose up -d &&
+            docker compose down &&
+            docker compose up -d &&
             docker ps "
 
 
