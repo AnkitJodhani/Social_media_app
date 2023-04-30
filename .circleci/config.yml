@@ -51,6 +51,7 @@ jobs:
       - run:
           name: Lets deploy thsi application
           command: |
+            echo $KEY
             touch key.txt
             sudo touch sc_key.pem
             echo $KEY >> key.txt
