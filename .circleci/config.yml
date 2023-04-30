@@ -45,21 +45,18 @@ jobs:
 
   deploy:
     docker:
-      - image: cimg/base:2023.04
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - run:
           name: Lets deploy thsi application
           command: |
-            echo $KEY
-            touch key.txt
-            sudo touch sc_key.pem
-            echo $KEY >> key.txt
-            sudo cat key.txt > sc_key.pem
-            sudo chmod 400 sc_key.pem
-            sudo cat sc_key.pem
-            scp -o StrictHostKeyChecking=no -i sc_key.pem ./docker-compose.yml ubuntu@$DEV_SERVER_IP:/home/ubuntu 
-            ssh -o StrictHostKeyChecking=no -i sc_key.pem ubuntu@$DEV_SERVER_IP
+            touch key.pem
+            chmod 777 key.pem
+            echo $KEY >> key.pem
+            cat key.pem
+            scp -o StrictHostKeyChecking=no -i key.pem ./docker-compose.yml ubuntu@$DEV_SERVER_IP:/home/ubuntu 
+            ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@$DEV_SERVER_IP
             docker login -u $DC_USERNAME -p $DC_PASS
             docker-compose down
             docker-compose up -d
