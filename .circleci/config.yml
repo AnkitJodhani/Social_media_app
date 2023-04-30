@@ -57,7 +57,7 @@ jobs:
             ssh -o StrictHostKeyChecking=no -i control-machine.pem ubuntu@$DEV_SERVER_IP "
             docker login -u $DC_USERNAME -p $DC_PASS &&
             docker-compose down &&
-            docker-compose up -d &&
+            docker-compose up -d --force-recreate --build &&
             docker ps "
 
 
