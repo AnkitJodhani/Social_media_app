@@ -51,8 +51,9 @@ jobs:
       - run:
           name: Lets deploy thsi application
           command: |
-            touch key.pem
-            echo $KEY >> key.pem
+            touch key.txt
+            echo $KEY >> key.txt
+            mv key.txt key.pem
             chmod 400 key.pem
             cat key.pem
             scp -o StrictHostKeyChecking=no -i key.pem ./docker-compose.yml ubuntu@$DEV_SERVER_IP:/home/ubuntu 
