@@ -10,8 +10,8 @@
 const isDevelopmentMode = process.env.MODE === "DEV";
 
 const clientURL = isDevelopmentMode
-	? "http://localhost:8080"
-	: ["http://localhost:8080"];
+	? "http://localhost"
+	: ["http://localhost"];
 
 module.exports = { clientURL };
 

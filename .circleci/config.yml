@@ -65,11 +65,11 @@ jobs:
 workflows:
   Production:
     jobs:
-      # - package
-      - deploy
-          # requires:
-          #   - package
-          # filters:
-          #   branches:
-          #     only: main
+      - package
+      - deploy:
+          requires:
+            - package
+          filters:
+            branches:
+              only: main
   
