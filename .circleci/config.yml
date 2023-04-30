@@ -65,9 +65,11 @@ jobs:
 workflows:
   testing:
     jobs:
-      # - package
-      - deploy
-          # requires:
-            # - package
-
+      - package
+      - deploy:
+          requires:
+            - package
+          filters:
+            branches:
+              only: main
   
