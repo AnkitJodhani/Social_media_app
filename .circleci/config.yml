@@ -45,7 +45,7 @@ jobs:
 
   deploy:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: cimg/base:2023.04
     steps:
       - checkout
       - run:
